@@ -21,7 +21,7 @@ if(!empty($_POST)){
               'antiques' => 'Antiques',
             );
             
-            checkbod('interests', 'interests', 'Select your interests', $options)
+            checkbox('interests', 'interests', 'Select your interests', $options)
             ?>
             <?php submit('Go to step 3 &raquo;'); ?>
           </form>

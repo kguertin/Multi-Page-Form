@@ -8,7 +8,7 @@
           <form action="page2.php" method="POST">
             <?php
             text('name', 'name', 'Your name', 'Enter your name');
-            text('email', 'email', 'Your email address'. 'Enter your email address');
+            text('email', 'email', 'Your email address', 'Enter your email address');
             submit('Go to step 2 &raquo;');
             ?>
           </form>

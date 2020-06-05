@@ -27,10 +27,11 @@ if(!empty($_POST)){
                 $arr = unserialize($val);
                 $val = implode(', ', $arr);
               }
-              printf(`<li>%s: %s<li>`, ucwords($key), __($val))
+              printf(`<li>%s: %s<li>`, ucwords($key), __($val));
             }
             ?>
           </ul>
+          <?php endif; ?>
         </div>
       </div>
     </div>
