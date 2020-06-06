@@ -78,10 +78,26 @@ function insert($data = array()) {
   return false;
 }
 
+
 function show_results($insert_id){
+  $conn = db_connect();
   
+  //prepare and bind 
+  $stmt = $conn->prepare("SELECT name, email, interests, address, city, province FROM mpforms WHERE id = ?");
+  $stmt->bind_param('d', $insert_id);
+  
+  // Execute and bind results
+  $stmt->execute();
+  $response = $stmt->get_result();
+  $results = $response->fetch_array(MYSQLI_ASSOC);
+  
+  return $results;
 }
 
+
+// Clear button,
+// Last page tells you what you are missing and takes you back to the first page
+// expand some form details
 
 
 
