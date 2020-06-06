@@ -4,7 +4,7 @@ include_once('header.php');
 if(!empty($_POST)){
   $_SESSION['address'] = $_POST['address'];
   $_SESSION['city'] = $_POST['city'];
-  $_SESSION['state'] = $_POST['state'];
+  $_SESSION['province'] = $_POST['province'];
   
   $insert_id = insert($_SESSION);
 }

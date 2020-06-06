@@ -16,7 +16,7 @@ if(!empty($_POST)) {
             <?php
             text('address', 'address', 'Address', 'Enter your address');
             text('city', 'city', 'City', 'Enter your city');
-            text('state', 'state', 'Province', 'Enter your province');
+            text('province', 'province', 'Province', 'Enter your province');
             submit('Go To Step 4 &raquo;');
             ?>
           </form>

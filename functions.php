@@ -34,6 +34,63 @@ function checkbox($name, $id, $label, $options = array()) {?>
   </div>
 <?php }
 
+// Submit Button Component
 function submit($value = 'submit', $class = 'btn btn-primary') {?>
   <button type="submit" class="<?php echo $class; ?>"><?php echo $value; ?></button>
 <?php }
+
+// Database Connection
+function db_connect(){
+  $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+  
+  if($conn->connect_error){
+    die("Connection Failed: " . $conn->connect_error); //kills script if not connected
+  }
+  return $conn;
+}
+
+function insert($data = array()) {
+  // Connect to Database
+  $conn = db_connect();
+  
+  // Whitelist and convert to variables
+  $name = $data['name'];
+  $email = $data['email'];
+  $interests = $data['interests'];
+  $address = $data['address'];
+  $city = $data['city'];
+  $province = $data['province'];
+  
+  // Serialize interests for now. Not sure if this is optimal for sql database as we should avoid adding arrays, maybe a join table is better for this. 
+  $interests = serialize($interests);
+  
+  // Prepare and Bind 
+  $stmt = $conn->prepare("INSERT INTO mpforms(name, email, interests, address, city, province) VALUES (?, ?, ?, ?, ?, ?)"); //SQL Injection  protection
+  $stmt->bind_param("ssssss", $name, $email, $interests, $address, $city, $province);
+  
+  // Execute code 
+  $insert = $stmt->execute();
+  
+  if ($insert) {
+    return $conn->insert_id;
+  }
+  
+  return false;
+}
+
+function show_results($insert_id){
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
